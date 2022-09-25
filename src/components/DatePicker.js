@@ -16,6 +16,9 @@ export default function DatePicker() {
   const todaysYear = todaysDate.getFullYear();
 
   const checkIfDateIsInThePast = useCallback((date) => {
+    // today needed its own variable in the function because
+    // an error gets thrown if you try to use todaysDate
+
     let today = new Date();
 
     today.setHours(0, 0, 0, 0);
