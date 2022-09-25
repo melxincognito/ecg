@@ -15,6 +15,7 @@ export default function DatePicker() {
   const todaysDay = todaysDate.getDate();
   const todaysYear = todaysDate.getFullYear();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkIfDateIsInThePast = (date) => {
     todaysDate.setHours(0, 0, 0, 0);
 
@@ -24,7 +25,7 @@ export default function DatePicker() {
       setFutureDate(false);
     }
   };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateDaysAway = (chosenMonth, chosenDay, chosenYear) => {
     const oneDay = 24 * 60 * 60 * 1000;
     const today = new Date(todaysYear, todaysMonth - 1, todaysDay);
@@ -82,7 +83,7 @@ export default function DatePicker() {
       setYear(todaysYear);
       calculateDaysAway(todaysMonth, todaysDay, todaysYear);
     }
-  }, []);
+  }, [calculateDaysAway, todaysDay, todaysMonth, todaysYear]);
 
   /*
   updating component to change the range of days available for each month
