@@ -1,0 +1,79 @@
+/* these are here so the number spinners aren't appearing on any number input fields. */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input {
+  width: 23vh;
+  height: 3.6vh;
+  padding: 0.5vh;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.14);
+}
+
+select {
+  width: 23vh;
+  height: 5vh;
+  padding: 0.5vh;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.14);
+}
+.main-container {
+  width: 100vh;
+  display: grid;
+  gap: 2rem;
+}
+
+.date-picker-container {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  font-weight: bolder;
+}
+
+.selector-container-day,
+.selector-container-month,
+.input-container-year {
+  display: grid;
+  justify-items: start;
+  gap: 0.3rem;
+}
+
+@media (max-width: 600px) {
+  input {
+    width: 21vh;
+    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.44);
+  }
+  select {
+    width: 22.5vh;
+    box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, 0.44);
+  }
+  .main-container {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    color: white;
+  }
+
+  .date-picker-container {
+    width: 60%;
+    display: flexbox;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .date-display-container {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
