@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./DatePicker.component.css";
 
 export default function DatePicker() {
@@ -15,28 +15,32 @@ export default function DatePicker() {
   const todaysDay = todaysDate.getDate();
   const todaysYear = todaysDate.getFullYear();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const checkIfDateIsInThePast = (date) => {
-    todaysDate.setHours(0, 0, 0, 0);
+  const checkIfDateIsInThePast = useCallback((date) => {
+    let today = new Date();
 
-    if (date >= todaysDate) {
+    today.setHours(0, 0, 0, 0);
+
+    if (date >= today) {
       setFutureDate(true);
     } else {
       setFutureDate(false);
     }
-  };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const calculateDaysAway = (chosenMonth, chosenDay, chosenYear) => {
-    const oneDay = 24 * 60 * 60 * 1000;
-    const today = new Date(todaysYear, todaysMonth - 1, todaysDay);
-    const chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
-    const differenceInDays = Math.round(
-      Math.abs((today - chosenDate) / oneDay)
-    );
+  }, []);
 
-    checkIfDateIsInThePast(chosenDate);
-    setDaysAway(differenceInDays);
-  };
+  const calculateDaysAway = useCallback(
+    (chosenMonth, chosenDay, chosenYear) => {
+      const oneDay = 24 * 60 * 60 * 1000;
+      const today = new Date(todaysYear, todaysMonth - 1, todaysDay);
+      const chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
+      const differenceInDays = Math.round(
+        Math.abs((today - chosenDate) / oneDay)
+      );
+
+      checkIfDateIsInThePast(chosenDate);
+      setDaysAway(differenceInDays);
+    },
+    [checkIfDateIsInThePast, todaysDay, todaysMonth, todaysYear]
+  );
 
   const updateDateLocalStorage = (chosenMonth, chosenDay, chosenYear) => {
     const dateItem = { month: chosenMonth, day: chosenDay, year: chosenYear };
