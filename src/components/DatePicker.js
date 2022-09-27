@@ -32,10 +32,10 @@ export default function DatePicker() {
 
   const calculateDaysAway = useCallback(
     (chosenMonth, chosenDay, chosenYear) => {
-      const oneDay = 24 * 60 * 60 * 1000;
-      const today = new Date(todaysYear, todaysMonth - 1, todaysDay);
-      const chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
-      const differenceInDays = Math.round(
+      let oneDay = 24 * 60 * 60 * 1000;
+      let today = new Date(todaysYear, todaysMonth - 1, todaysDay);
+      let chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
+      let differenceInDays = Math.round(
         Math.abs((today - chosenDate) / oneDay)
       );
 
@@ -46,7 +46,7 @@ export default function DatePicker() {
   );
 
   const updateDateLocalStorage = (chosenMonth, chosenDay, chosenYear) => {
-    const dateItem = { month: chosenMonth, day: chosenDay, year: chosenYear };
+    let dateItem = { month: chosenMonth, day: chosenDay, year: chosenYear };
     localStorage.setItem("date", JSON.stringify(dateItem));
   };
 
@@ -75,6 +75,7 @@ export default function DatePicker() {
 
   useEffect(() => {
     const date = localStorage.getItem("date");
+
     if (date) {
       const parsedDate = JSON.parse(date);
       const parsedMonth = parsedDate.month;
@@ -120,7 +121,7 @@ export default function DatePicker() {
     <div className="main-container">
       <div className="date-picker-container">
         <div className="selector-container-month">
-          <label for="month-selection">Month</label>
+          <label htmlFor="month-selection">Month</label>
           <select
             id="month-selection"
             className="months-selection"
@@ -137,7 +138,7 @@ export default function DatePicker() {
         </div>
 
         <div className="selector-container-day">
-          <label for="day-of-month-selection">Day</label>
+          <label htmlFor="day-of-month-selection">Day</label>
           <select
             id="day-of-month-selection"
             className="day-of-month-selection"
@@ -154,7 +155,7 @@ export default function DatePicker() {
         </div>
 
         <div className="input-container-year">
-          <label for="year-selection">Year</label>
+          <label htmlFor="year-selection">Year</label>
           <input
             id="year-selection"
             className="year-selection"
