@@ -4,9 +4,9 @@ import DatePicker from "./components/DatePicker";
 
 function App() {
   return (
-    <div className="App">
+    <main className="App">
       <DatePicker />
-    </div>
+    </main>
   );
 }
 
