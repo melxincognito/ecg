@@ -97,7 +97,6 @@ export default function DatePicker() {
     }
   }, [calculateDaysAway, todaysDay, todaysMonth, todaysYear]);
 
-  localStorage.clear();
   /*
   updating component to change the range of days available for each month
   depending on the month selected and if it's a leap year
