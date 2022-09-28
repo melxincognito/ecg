@@ -32,7 +32,7 @@ export default function DatePicker() {
 
   const calculateDaysAway = useCallback(
     (chosenMonth, chosenDay, chosenYear) => {
-      if (chosenYear.length === 4) {
+      if (chosenYear.length === 4 && chosenMonth && chosenDay) {
         let oneDay = 24 * 60 * 60 * 1000;
         let today = new Date(todaysYear, todaysMonth - 1, todaysDay);
         let chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
