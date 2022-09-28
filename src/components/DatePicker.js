@@ -32,15 +32,19 @@ export default function DatePicker() {
 
   const calculateDaysAway = useCallback(
     (chosenMonth, chosenDay, chosenYear) => {
-      let oneDay = 24 * 60 * 60 * 1000;
-      let today = new Date(todaysYear, todaysMonth - 1, todaysDay);
-      let chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
-      let differenceInDays = Math.round(
-        Math.abs((today - chosenDate) / oneDay)
-      );
+      if (chosenYear.length === 4) {
+        let oneDay = 24 * 60 * 60 * 1000;
+        let today = new Date(todaysYear, todaysMonth - 1, todaysDay);
+        let chosenDate = new Date(chosenYear, chosenMonth - 1, chosenDay);
+        let differenceInDays = Math.round(
+          Math.abs((today - chosenDate) / oneDay)
+        );
 
-      checkIfDateIsInThePast(chosenDate);
-      setDaysAway(differenceInDays);
+        checkIfDateIsInThePast(chosenDate);
+        setDaysAway(differenceInDays);
+      } else {
+        return;
+      }
     },
     [checkIfDateIsInThePast, todaysDay, todaysMonth, todaysYear]
   );
