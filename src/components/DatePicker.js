@@ -97,6 +97,7 @@ export default function DatePicker() {
     }
   }, [calculateDaysAway, todaysDay, todaysMonth, todaysYear]);
 
+  localStorage.clear();
   /*
   updating component to change the range of days available for each month
   depending on the month selected and if it's a leap year
@@ -166,7 +167,7 @@ export default function DatePicker() {
             type="number"
             value={year}
             onChange={handleYearChange}
-            aria-label="type year"
+            aria-label="type year or use spinner to increment/decrement"
           />
         </div>
       </div>
