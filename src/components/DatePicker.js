@@ -166,7 +166,7 @@ export default function DatePicker() {
             type="number"
             value={year}
             onChange={handleYearChange}
-            aria-label="type year or use spinner to increment/decrement"
+            aria-label="type year or use stepper to increment/decrement"
           />
         </div>
       </div>
