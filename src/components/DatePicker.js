@@ -131,7 +131,7 @@ export default function DatePicker() {
             className="months-selection"
             value={month}
             onChange={handleMonthChange}
-            aria-label="select month"
+            aria-label="Select month."
           >
             {monthsSelections.map((month, index) => (
               <option key={index} value={month.value}>
@@ -148,7 +148,7 @@ export default function DatePicker() {
             className="day-of-month-selection"
             value={dayOfMonth}
             onChange={handleDayChange}
-            aria-label="select day of month"
+            aria-label="Select day of month."
           >
             {daysOfMonthSelectionRange.map((dayOfMonth, index) => (
               <option key={index} value={dayOfMonth.value}>
@@ -166,7 +166,7 @@ export default function DatePicker() {
             type="number"
             value={year}
             onChange={handleYearChange}
-            aria-label="type year or use stepper to increment/decrement"
+            aria-label="Type year or use stepper to increment/decrement year."
           />
         </div>
       </div>
